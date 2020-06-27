@@ -1,0 +1,29 @@
+.custom-bg-dark {
+    background-color: #373f46 !important;
+}
+
+nav.navbar {
+    height: 4rem;
+}
+
+a.navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-left: 5px;
+}
+
+li.nav-item.a {
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px) {
+    div#navbarCollapse {
+        width: 100%;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        padding-left: 25px;
+        padding-bottom: 5px;
+        background-color: #373f46;
+    }
+}

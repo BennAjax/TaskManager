@@ -8,6 +8,7 @@ import TaskCreate from "@/views/tasks/TaskCreate";
 import TaskEdit from "@/views/tasks/TaskEdit";
 
 Vue.use(VueRouter);
+const isLoggedIn = false;
 
 const routes = [
   {
@@ -28,17 +29,38 @@ const routes = [
   {
     path: "/tasks",
     name: "TaskList",
-    component: TaskList
+    component: TaskList,
+    beforeEnter: (to, from, next) => {
+      if (isLoggedIn) {
+        next();
+      } else {
+        next("/login");
+      }
+    }
   },
   {
     path: "/tasks/new",
     name: "TaskCreate",
-    component: TaskCreate
+    component: TaskCreate,
+    beforeEnter: (to, from, next) => {
+      if (isLoggedIn) {
+        next();
+      } else {
+        next("/login");
+      }
+    }
   },
   {
     path: "/tasks/:id",
     name: "TaskEdit",
-    component: TaskEdit
+    component: TaskEdit,
+    beforeEnter: (to, from, next) => {
+      if (isLoggedIn) {
+        next();
+      } else {
+        next("/login");
+      }
+    }
   },
   {
     path: "*",

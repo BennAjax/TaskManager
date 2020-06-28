@@ -1,10 +1,10 @@
 <template>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top custom-bg-dark">
-      <a class="navbar-brand" href="#">
+      <router-link to="/" class="navbar-brand">
         <img alt="logo" style="max-height: 25px" src="../assets/logo.png" />
         Task Manager
-      </a>
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -18,17 +18,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto text-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+          <li class="nav-item">
+            <router-link to="/" class="nav-link" exact>
+              Home
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tasks</a>
+            <router-link to="/tasks" class="nav-link" exact>
+              Tasks
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <router-link to="/register" class="nav-link" exact>
+              Register
+            </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <router-link to="/login" class="nav-link" exact>
+              Login
+            </router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Logout</a>
@@ -36,7 +44,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Benn</a>
           </li>
-
         </ul>
       </div>
     </nav>

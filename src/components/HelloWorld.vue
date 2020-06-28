@@ -7,7 +7,9 @@
     </p>
     <hr class="my-4" />
     <p>Click below to begin managing tasks for users</p>
-    <a class="btn btn-success btn-lg " href="#" role="button">View Task</a>
+    <router-link to="/tasks" class="btn btn-success btn-lg " role="button">
+      View Task
+    </router-link>
   </div>
 </template>
 
@@ -21,6 +23,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -3,7 +3,12 @@
     <div id="nav">
       <NavBar />
     </div>
-    <router-view />
+    <div id="app-container">
+      <router-view />
+    </div>
+    <div>
+      <Footer/>
+    </div>
   </div>
 </template>
 
@@ -12,7 +17,8 @@
 </style>
 <script>
   import NavBar from "@/components/NavBar";
+  import Footer from "@/components/Footer";
   export default {
-    components: {NavBar}
+    components: {Footer, NavBar}
   }
 </script>

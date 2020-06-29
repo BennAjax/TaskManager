@@ -8,6 +8,7 @@ import TaskCreate from "@/views/tasks/TaskCreate";
 import TaskEdit from "@/views/tasks/TaskEdit";
 
 Vue.use(VueRouter);
+
 const isLoggedIn = false;
 
 const routes = [

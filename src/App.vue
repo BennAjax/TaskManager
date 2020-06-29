@@ -17,6 +17,9 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 export default {
-  components: { Footer, NavBar }
+  components: { Footer, NavBar },
+  beforeCreate: function() {
+    this.$store.dispatch("authenticate");
+  }
 };
 </script>

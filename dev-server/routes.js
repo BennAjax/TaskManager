@@ -1,6 +1,6 @@
-import taskRoutes from './api/task';
-import userRoutes from './api/user';
-import authRoutes from './api/authentication';
+import taskRoutes from './api/task/task-routes';
+import userRoutes from './api/user/user-routes';
+import authRoutes from './api/authentication/auth-routes';
 
 export default function routes(app) {
   app.use('/api', taskRoutes);

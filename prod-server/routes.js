@@ -7,14 +7,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = routes;
 
-var _task = _interopRequireDefault(require("./api/task"));
+var _taskRoutes = _interopRequireDefault(require("./api/task/task-routes"));
 
-var _user = _interopRequireDefault(require("./api/user"));
+var _userRoutes = _interopRequireDefault(require("./api/user/user-routes"));
 
-var _authentication = _interopRequireDefault(require("./api/authentication"));
+var _authRoutes = _interopRequireDefault(require("./api/authentication/auth-routes"));
 
 function routes(app) {
-  app.use('/api', _task.default);
-  app.use('/api', _user.default);
-  app.use('/api', _authentication.default);
+  app.use('/api', _taskRoutes.default);
+  app.use('/api', _userRoutes.default);
+  app.use('/api', _authRoutes.default);
 }

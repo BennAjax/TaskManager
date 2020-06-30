@@ -11,9 +11,9 @@ var _express = _interopRequireDefault(require("express"));
 
 var router = _express.default.Router();
 
-router.post("/login", function (req, res) {
-  res.send("get task");
+router.post('/login', function (req, res) {
+  res.send('get task');
 });
-router.post("/register", function (req, res) {});
+router.post('/register', function (req, res) {});
 var _default = router;
 exports.default = _default;

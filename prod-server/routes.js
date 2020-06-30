@@ -14,7 +14,7 @@ var _user = _interopRequireDefault(require("./api/user"));
 var _authentication = _interopRequireDefault(require("./api/authentication"));
 
 function routes(app) {
-  app.use("/api", _task.default);
-  app.use("/api", _user.default);
-  app.use("/api", _authentication.default);
+  app.use('/api', _task.default);
+  app.use('/api', _user.default);
+  app.use('/api', _authentication.default);
 }

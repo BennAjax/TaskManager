@@ -11,12 +11,12 @@ var _express = _interopRequireDefault(require("express"));
 
 var router = _express.default.Router();
 
-router.get("/task", function (req, res) {
-  res.send("get task");
+router.get('/task', function (req, res) {
+  res.send('get task');
 });
-router.get("/task/:id", function (req, res) {});
-router.post("/task", function (req, res) {});
-router.put("/task:id", function (req, res) {});
-router.delete("/task:id", function (req, res) {});
+router.get('/task/:id', function (req, res) {});
+router.post('/task', function (req, res) {});
+router.put('/task:id', function (req, res) {});
+router.delete('/task:id', function (req, res) {});
 var _default = router;
 exports.default = _default;

@@ -3,16 +3,16 @@ import * as StringUtil from '../../utilities/StringUtil';
 export function login(req, res) {
   const validation = validateRegistration(req.body);
   if (!validation.isValid) {
-    return res.json({ message: validation.message });
+    return res.status(400).json({ message: validation.message });
   }
 
-  return res.json();
+  return res.status(200).json();
 }
 
 export function registration(req, res) {
   const validation = validateRegistration(req.body);
   if (!validation.isValid) {
-    return res.json({ message: validation.message });
+    return res.status(400).json({ message: validation.message });
   }
 
   const user = {
@@ -20,7 +20,7 @@ export function registration(req, res) {
     password: req.body.password
   };
   console.log(user);
-  return res.json();
+  return res.status(201).json();
 }
 
 function validateRegistration(body) {

@@ -14,19 +14,19 @@ function login(req, res) {
   var validation = validateRegistration(req.body);
 
   if (!validation.isValid) {
-    return res.json({
+    return res.status(400).json({
       message: validation.message
     });
   }
 
-  return res.json();
+  return res.status(200).json();
 }
 
 function registration(req, res) {
   var validation = validateRegistration(req.body);
 
   if (!validation.isValid) {
-    return res.json({
+    return res.status(400).json({
       message: validation.message
     });
   }
@@ -36,7 +36,7 @@ function registration(req, res) {
     password: req.body.password
   };
   console.log(user);
-  return res.json();
+  return res.status(201).json();
 }
 
 function validateRegistration(body) {

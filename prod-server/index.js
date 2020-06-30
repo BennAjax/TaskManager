@@ -8,9 +8,12 @@ var _routes = _interopRequireDefault(require("./routes"));
 
 var _env = _interopRequireDefault(require("./config/env"));
 
+var _db = _interopRequireDefault(require("./config/db"));
+
 var app = (0, _express.default)();
 var port = 3000;
 (0, _env.default)(app);
+(0, _db.default)();
 (0, _routes.default)(app);
 app.get('/', function (req, res) {
   if (process.env.NODE_ENV !== 'production') {

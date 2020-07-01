@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-center">Login</h1>
-    <form class="custom-form" v-on:submit="onSubmit">
+    <form class="custom-form" v-on:submit.prevent="onSubmit">
       <div class="form-group">
         <label for="username">Email address</label>
         <input
@@ -9,6 +9,7 @@
           class="form-control"
           id="username"
           placeholder="Username"
+          v-model="username"
         />
       </div>
       <div class="form-group">
@@ -18,6 +19,7 @@
           class="form-control"
           id="password"
           placeholder="Password"
+          v-model="password"
         />
       </div>
       <div class="form-group">
@@ -28,14 +30,24 @@
 </template>
 
 <script>
-import { login } from "@/services/AuthService";
+import * as auth  from "@/services/AuthService";
 export default {
   name: "Login",
+  data: function() {
+    return {
+      username: "",
+      password: ""
+    };
+  },
   methods: {
-    onSubmit: function(event) {
-      event.preventDefault();
-      login();
-      this.$router.push({ name: "home" });
+    onSubmit: async function() {
+
+      const user = {
+        username: this.username,
+        password: this.password
+      };
+      await auth.login(user);
+      this.$router.push({ name: "Home" });
     }
   }
 };

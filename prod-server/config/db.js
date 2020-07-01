@@ -11,7 +11,8 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 function connectDB() {
   _mongoose.default.connect(process.env.DB_URL, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   }, function (error) {
     if (error) {
       console.log('Unable to connect to database');

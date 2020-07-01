@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import StringUtil from '../utilities/StringUtil';
+import bcrypt from 'bcrypt-nodejs';
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -16,10 +17,17 @@ userSchema.virtual('fullName').get(function() {
   return `${first} ${last}`;
 });
 
+userSchema.statics.passwordMatches = function(password, hash) {
+  return bcrypt.compareSync(password, hash);
+}
+
 userSchema.pre('save', function(next) {
   this.username = this.username.toLowerCase();
   this.first = this.first.toLowerCase();
   this.last = this.last.toLowerCase();
+
+  const unsafePassword = this.password;
+  this.password = bcrypt.hashSync(unsafePassword);
   next();
 });
 

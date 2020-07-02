@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import Store from "../store";
 import { http } from "./HttpService";
 
@@ -29,10 +30,34 @@ export function logout() {
   localStorage.clear();
   Store.dispatch("authenticate");
 }
+
+export function getToken() {
+  localStorage.getItem('token')
+}
+
 export function getUsername() {
-  return "david";
+  const token = decodeToken();
+  if (!token) {
+    return null;
+  }
+  return token.user.username
 }
 
 export function getUserId() {
-  return 1;
+  const token = decodeToken();
+  if (!token) {
+    return null;
+  }
+  return token.user.id
 }
+
+function decodeToken() {
+  const token = getToken();
+  if (!token) {
+    return null;
+  }
+  return jwt.decode(token);
+}
+
+
+

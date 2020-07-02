@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("C:/Applications/HybridApps/taskmanager/node_modules/@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("C:/Applications/HybridApps/taskmanager/node_modules/@babel/runtime/helpers/interopRequireDefault");
 
 require("core-js/modules/es.array.find");
@@ -23,6 +25,8 @@ var _userModel = _interopRequireDefault(require("../../model/user-model"));
 
 var _taskModel = _interopRequireDefault(require("../../model/task-model"));
 
+var auth = _interopRequireWildcard(require("../../services/auth-service"));
+
 function index(req, res) {
   _taskModel.default.find({}, function (error, tasks) {
     if (error) {
@@ -36,7 +40,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  var id = 10;
+  var id = auth.getUserId(req);
 
   _userModel.default.findOne({
     _id: id
@@ -59,7 +63,7 @@ function create(req, res) {
 }
 
 function update(req, res) {
-  var id = 10;
+  var id = auth.getUserId(req);
 
   _userModel.default.findOne({
     _id: id
@@ -72,7 +76,7 @@ function update(req, res) {
       return res.status(404).json();
     }
 
-    var task = req.body.task;
+    var task = new _taskModel.default(req.body.task);
     task.author = user._id;
     task.dueDate = (0, _moment.default)(task.dueDate);
 
@@ -89,7 +93,8 @@ function update(req, res) {
 }
 
 function remove(req, res) {
-  var id = 10;
+  var id = auth.getUserId(req);
+  ;
 
   _taskModel.default.findOne({
     _id: req.params.id

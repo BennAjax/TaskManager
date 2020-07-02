@@ -14,6 +14,8 @@ var StringUtil = _interopRequireWildcard(require("../../utilities/StringUtil"));
 
 var _userModel = _interopRequireDefault(require("../../model/user-model"));
 
+var _authService = require("../../services/auth-service");
+
 function login(req, res) {
   var validation = validateLogin(req.body);
 
@@ -40,7 +42,9 @@ function login(req, res) {
       return res.status(401).json();
     }
 
-    return res.status(201).json();
+    return res.status(201).json({
+      token: (0, _authService.generateJWT)(user)
+    });
   });
 }
 

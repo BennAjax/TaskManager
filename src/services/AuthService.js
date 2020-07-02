@@ -11,10 +11,7 @@ export function login(user) {
     .post("/login", user)
     .then(res => {
       if (res) {
-        const fakeToken = {
-          token: "xxxxxxxx"
-        };
-        setToken(fakeToken);
+        setToken(res.data.token);
       }
     });
 }
@@ -24,10 +21,14 @@ export function register(user) {
 }
 
 function setToken(token) {
-  localStorage.setItem("token", JSON.stringify(token));
+  localStorage.setItem("token", token);
   Store.dispatch("authenticate");
 }
 
+export function logout() {
+  localStorage.clear();
+  Store.dispatch("authenticate");
+}
 export function getUsername() {
   return "david";
 }

@@ -19,29 +19,29 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto text-center">
           <li class="nav-item">
-            <router-link to="/" class="nav-link" exact>
+            <router-link  to="/" class="nav-link" exact>
               Home
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/tasks" class="nav-link" exact>
+            <router-link v-if="$store.state.isLoggedIn" to="/tasks" class="nav-link" exact>
               Tasks
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/register" class="nav-link" exact>
+            <router-link v-if="!$store.state.isLoggedIn" to="/register" class="nav-link" exact>
               Register
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/login" class="nav-link" exact>
+            <router-link v-if="!$store.state.isLoggedIn" to="/login" class="nav-link" exact>
               Login
             </router-link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
+            <a v-on:click.prevent="logout" class="nav-link" href="#">Logout</a>
           </li>
-          <li class="nav-item">
+          <li v-if="$store.state.isLoggedIn" class="nav-item">
             <a class="nav-link" href="#">{{
               this.$store.state.username ? this.$store.state.username : "User"
             }}</a>
@@ -53,8 +53,15 @@
 </template>
 
 <script>
+import * as auth from "../services/AuthService";
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  methods: {
+    logout() {
+      auth.logout();
+      this.$router.push({ name: "Home" });
+    }
+  }
 };
 </script>
 

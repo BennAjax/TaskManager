@@ -3,7 +3,7 @@
     <h1 class="text-center">Login</h1>
     <form class="custom-form" v-on:submit.prevent="onSubmit">
       <div class="form-group">
-        <label for="username">Email address</label>
+        <label for="username">Username</label>
         <input
           type="text"
           class="form-control"

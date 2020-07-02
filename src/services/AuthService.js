@@ -32,7 +32,7 @@ export function logout() {
 }
 
 export function getToken() {
-  localStorage.getItem('token')
+  return localStorage.getItem("token");
 }
 
 export function getUsername() {
@@ -40,7 +40,7 @@ export function getUsername() {
   if (!token) {
     return null;
   }
-  return token.user.username
+  return token.user.username;
 }
 
 export function getUserId() {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import store from "../store";
-import * as auth from './AuthService';
+import * as auth from "./AuthService";
 
 export function http() {
   return axios.create({
